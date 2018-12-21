@@ -88,14 +88,14 @@ public class KeywordSearchResponse {
     this.responseMessage = responseMessage;
   }
 
-  public KeywordSearchResponse sortBy(String sortStrategy) {
+  public KeywordSearchResponse sortStrategy(String sortStrategy) {
     this.sortStrategy = sortStrategy;
     return this;
   }
 
    /**
-   * Get sortBy
-   * @return sortBy
+   * Get sortStrategy
+   * @return sortStrategy
   **/
   @ApiModelProperty(example = "date-desc-rank", value = "")
   public String getSortStrategy() {
@@ -218,7 +218,7 @@ public class KeywordSearchResponse {
     
     sb.append("    responseStatus: ").append(toIndentedString(responseStatus)).append("\n");
     sb.append("    responseMessage: ").append(toIndentedString(responseMessage)).append("\n");
-    sb.append("    sortBy: ").append(toIndentedString(sortStrategy)).append("\n");
+    sb.append("    sortStrategy: ").append(toIndentedString(sortStrategy)).append("\n");
     sb.append("    domainCode: ").append(toIndentedString(domainCode)).append("\n");
     sb.append("    keyword: ").append(toIndentedString(keyword)).append("\n");
     sb.append("    numberOfProducts: ").append(toIndentedString(numberOfProducts)).append("\n");

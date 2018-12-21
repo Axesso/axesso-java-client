@@ -83,8 +83,8 @@ public class ProductDetailsResponse {
   @SerializedName("features")
   private List<String> features = null;
 
-  @SerializedName("tags")
-  private Boolean tags = null;
+  @SerializedName("prime")
+  private Boolean prime = null;
 
   public ProductDetailsResponse responseStatus(String responseStatus) {
     this.responseStatus = responseStatus;
@@ -408,22 +408,22 @@ public class ProductDetailsResponse {
     this.features = features;
   }
 
-  public ProductDetailsResponse tags(Boolean tags) {
-    this.tags = tags;
+  public ProductDetailsResponse prime(Boolean prime) {
+    this.prime = prime;
     return this;
   }
 
    /**
-   * Get tags
-   * @return tags
+   * Get prime
+   * @return prime
   **/
   @ApiModelProperty(value = "")
-  public Boolean isTags() {
-    return tags;
+  public Boolean isPrime() {
+    return prime;
   }
 
-  public void setTags(Boolean tags) {
-    this.tags = tags;
+  public void setPrime(Boolean prime) {
+    this.prime = prime;
   }
 
 
@@ -453,12 +453,12 @@ public class ProductDetailsResponse {
         Objects.equals(this.priceShippingInformation, productDetailsResponse.priceShippingInformation) &&
         Objects.equals(this.priceSaving, productDetailsResponse.priceSaving) &&
         Objects.equals(this.features, productDetailsResponse.features) &&
-        Objects.equals(this.tags, productDetailsResponse.tags);
+        Objects.equals(this.prime, productDetailsResponse.prime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseStatus, responseMessage, productTitle, manufacturer, countReview, answeredQuestions, productRating, asin, sizeSelection, soldBy, fulfilledBy, warehouseAvailability, retailPrice, price, priceShippingInformation, priceSaving, features, tags);
+    return Objects.hash(responseStatus, responseMessage, productTitle, manufacturer, countReview, answeredQuestions, productRating, asin, sizeSelection, soldBy, fulfilledBy, warehouseAvailability, retailPrice, price, priceShippingInformation, priceSaving, features, prime);
   }
 
 
@@ -484,7 +484,7 @@ public class ProductDetailsResponse {
     sb.append("    priceShippingInformation: ").append(toIndentedString(priceShippingInformation)).append("\n");
     sb.append("    priceSaving: ").append(toIndentedString(priceSaving)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    prime: ").append(toIndentedString(prime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
