@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/swagger-java-client-1.0.0.jar`
+* `target/axesso-java-client-1.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
