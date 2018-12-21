@@ -1,4 +1,4 @@
-# swagger-java-client
+# axesso-java-client
 
 Axesso Api
 - API version: 1.0.0
@@ -38,8 +38,8 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>io.swagger</groupId>
-  <artifactId>swagger-java-client</artifactId>
+  <groupId>de.axesso</groupId>
+  <artifactId>axesso-java-client</artifactId>
   <version>1.0.0</version>
   <scope>compile</scope>
 </dependency>
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.swagger:swagger-java-client:1.0.0"
+compile "de.axesso:axesso-java-client:1.0.0"
 ```
 
 ### Others
