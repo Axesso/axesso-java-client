@@ -1,4 +1,8 @@
 *.class
+.classpath
+.project
+.swagger-codget-ignore
+.travis.yml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
