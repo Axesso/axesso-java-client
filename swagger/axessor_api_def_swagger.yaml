@@ -1,0 +1,260 @@
+swagger: "2.0"
+info:
+  description: "Use this api to fetch information to Amazon products and more."
+  version: "1.0.0"
+  title: "Axesso Api"
+  termsOfService: ""
+  contact:
+    email: "support@axesso.de"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api.axesso.de"
+tags:
+- name: "amz"
+  description: "APIs for request on Amazon"
+  externalDocs:
+    description: "Find out more"
+    url: "http://api.axesso.de/"
+schemes:
+- "http"
+paths:
+  /amz/amazon-lookup-product:
+    get:
+      tags:
+      - "amz"
+      summary: "lookup product information"
+      description: ""
+      operationId: "requestProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "query"
+        description: "The url of the requested product."
+        required: true
+        type: "string"
+      - name: "size"
+        in: "query"
+        description: "Size parameter if available."
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ProductDetailsResponse"
+        400:
+          description: "Bad Request - Missing parameter"
+        404:
+          description: "Not Found - Product not Found"
+        406:
+          description: "Not Acceptable - Wrong parameter"
+      security: []
+  /amz/amazon-lookup-buy-recommendations:
+    get:
+      tags:
+      - "amz"
+      summary: "request buy recommendations to a given product"
+      description: ""
+      operationId: "requestBuyRecommendation"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "query"
+        description: "The url of the requested product."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/BuyRecommendationResponse"
+        400:
+          description: "Bad Request - Missing parameter"
+        404:
+          description: "Not Found - Product not Found"
+        406:
+          description: "Not Acceptable - Wrong parameter"
+  /amz/amazon-search-by-keyword:
+    get:
+      tags:
+      - "amz"
+      summary: "fetch results auf a keyword search on Amazon"
+      description: ""
+      operationId: "keywordSearch"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "keyword"
+        in: "query"
+        description: "keyword to search"
+        required: true
+        type: "string"
+      - name: "domainCode"
+        in: "query"
+        description: "domain for the search"
+        required: true
+        type: "string"
+      - name: "sortBy"
+        in: "query"
+        description: "sort option"
+        default: "relevanceblender"
+        type: "string"
+      - name: "numberOfProducts"
+        in: "query"
+        default: "20"
+        description: "number of the results (max 20)"
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/KeywordSearchResponse"
+        400:
+          description: "Bad Request - Missing parameter"
+        404:
+          description: "Not Found - Product not Found"
+      security: []
+  /amz/sort-options:
+    get:
+      tags:
+      - "amz"
+      summary: "request available sort options to use in keyword search"
+      description: ""
+      operationId: "sortOptions"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SortOptionResponse"
+definitions:
+  ProductDetailsResponse:
+    type: "object"
+    properties:
+      responseStatus:
+        type: "string"
+        example: "PRODUCT_FOUND_RESPONSE"
+      responseMessage:
+        type: "string"
+        example: "Product successfully found!"
+      productTitle:
+        type: "string"
+        example: "Playstation 4"
+      manufacturer:
+        type: "string"
+        example: "Sony"  
+      countReview:
+        type: "integer"
+        format: "int64"
+      answeredQuestions:
+        type: "integer"
+        format: "int64"
+      productRating:
+        type: "string"
+        example: "4.4 out of 5 stars"
+      asin:
+        type: "string"
+        example: "B077Q3YRP5"
+      sizeSelection:
+        type: "array"
+        items:
+          type: "string"
+      soldBy:
+        type: "string"
+        example: "Sony" 
+      fulfilledBy:
+        type: "string"
+        example: "Amazon" 
+      warehouseAvailability:
+        type: "string"
+        example: "In Stock" 
+      retailPrice:
+        type: "number"
+      price:
+        type: "number"
+      priceShippingInformation:
+        type: "string"
+        example: "free"
+      priceSaving:
+        type: "string"
+        example: "You Save: $59,58 (43%)"
+      features:
+        type: "array"
+        items:
+          type: "string"
+      prime:
+        type: "boolean"
+  BuyRecommendationResponse:
+    type: "object"
+    properties:
+      responseStatus:
+        type: "string"
+        example: "PRODUCT_FOUND_RESPONSE"
+      responseMessage:
+        type: "string"
+        example: "Product successfully found!"
+      numberOfProducts:
+        type: "integer"
+        format: "int64"
+      buyRecommendations:
+        type: "array"
+        items:
+          type: "string"
+  KeywordSearchResponse:
+    type: "object"
+    properties:
+      responseStatus:
+        type: "string"
+        example: "PRODUCT_FOUND_RESPONSE"
+      responseMessage:
+        type: "string"
+        example: "Product successfully found!"
+      sortStrategy:
+        type: "string"
+        example: "date-desc-rank"
+      domainCode:
+        type: "string"
+        example: "com"
+      keyword:
+        type: "string"
+        example: "Playstation 4"
+      numberOfProducts:
+        type: "integer"
+        format: "int64"
+      foundProducts:
+        type: "array"
+        items:
+          type: "string"
+  SortOptionResponse:
+    type: "object"
+    properties:
+      responseStatus:
+        type: "string"
+        example: "PRODUCT_FOUND_RESPONSE"
+      responseMessage:
+        type: "string"
+        example: "Product successfully found!"
+      resultSize:
+        type: "integer"
+        format: "int64"
+      sortOptions:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            order:
+              type: "integer"
+              format: "int64"
+            sortName:
+              type: "string"
+              example: "relevanceblender"
+            strategy:
+              type: "string"
+              example: "AMAZON_FEATURED"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://api-doc.axesso.de/"
