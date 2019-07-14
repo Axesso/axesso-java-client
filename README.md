@@ -85,8 +85,8 @@ public class AmzApiExample {
     public static void main(String[] args) {
         
         AApiClient client = new ApiClient();
-		client.setApiKey("XXXXXX");			//contact support@axesso.de to get key
-		AmzApi apiInstance = new AmzApi(client);
+	client.setApiKey("XXXXXX");			//contact support@axesso.de to get key
+	AmzApi apiInstance = new AmzApi(client);
         try {
             ProductDetailsResponse product = apiInstance.requestProduct("https://www.amazon.com/dp/B07TN8B972", null);
             System.out.println(product);
