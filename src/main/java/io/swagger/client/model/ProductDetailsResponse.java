@@ -14,15 +14,9 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +79,12 @@ public class ProductDetailsResponse {
 
   @SerializedName("prime")
   private Boolean prime = null;
+  
+  @SerializedName("productDescription")
+  private String productDescription = null;
+  
+  @SerializedName("productDetails")
+  private List<DetailsResponse> productDetails = null;
 
   public ProductDetailsResponse responseStatus(String responseStatus) {
     this.responseStatus = responseStatus;
@@ -412,6 +412,42 @@ public class ProductDetailsResponse {
     this.prime = prime;
     return this;
   }
+  
+  /**
+   * Get productDescription
+   * @return productDescription
+  **/
+  @ApiModelProperty(value = "")
+  public String getProductDescription() {
+    return productDescription;
+  }
+
+  public void setProductDescription(String productDescription) {
+    this.productDescription = productDescription;
+  }
+
+  public ProductDetailsResponse productDescription(String productDescription) {
+    this.productDescription = productDescription;
+    return this;
+  }
+  
+  /**
+   * Get productDetails
+   * @return productDetails
+  **/
+  @ApiModelProperty(value = "")
+  public List<DetailsResponse>  getProductDetails() {
+    return productDetails;
+  }
+
+  public void setProductDescription(List<DetailsResponse> productDetails) {
+    this.productDetails = productDetails;
+  }
+
+  public ProductDetailsResponse productDescription(List<DetailsResponse>  productDetails) {
+    this.productDetails = productDetails;
+    return this;
+  }
 
    /**
    * Get prime
@@ -453,12 +489,14 @@ public class ProductDetailsResponse {
         Objects.equals(this.priceShippingInformation, productDetailsResponse.priceShippingInformation) &&
         Objects.equals(this.priceSaving, productDetailsResponse.priceSaving) &&
         Objects.equals(this.features, productDetailsResponse.features) &&
-        Objects.equals(this.prime, productDetailsResponse.prime);
+        Objects.equals(this.prime, productDetailsResponse.prime) &&
+    	Objects.equals(this.productDescription, productDetailsResponse.productDescription) &&
+    	Objects.equals(this.productDetails, productDetailsResponse.productDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseStatus, responseMessage, productTitle, manufacturer, countReview, answeredQuestions, productRating, asin, sizeSelection, soldBy, fulfilledBy, warehouseAvailability, retailPrice, price, priceShippingInformation, priceSaving, features, prime);
+    return Objects.hash(responseStatus, responseMessage, productTitle, manufacturer, countReview, answeredQuestions, productRating, asin, sizeSelection, soldBy, fulfilledBy, warehouseAvailability, retailPrice, price, priceShippingInformation, priceSaving, features, prime, productDescription, productDetails);
   }
 
 
@@ -485,6 +523,8 @@ public class ProductDetailsResponse {
     sb.append("    priceSaving: ").append(toIndentedString(priceSaving)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    prime: ").append(toIndentedString(prime)).append("\n");
+    sb.append("    productDescription: ").append(toIndentedString(productDescription)).append("\n");
+    sb.append("    productDetails: ").append(toIndentedString(productDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

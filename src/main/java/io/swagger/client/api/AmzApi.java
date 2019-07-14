@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+
 import io.swagger.client.model.BuyRecommendationResponse;
 import io.swagger.client.model.KeywordSearchResponse;
 import io.swagger.client.model.ProductDetailsResponse;
@@ -378,7 +379,7 @@ public class AmzApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "api_key" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
