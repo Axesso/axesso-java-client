@@ -84,16 +84,14 @@ public class AmzApiExample {
 
     public static void main(String[] args) {
         
-        AmzApi apiInstance = new AmzApi();
-        String keyword = "keyword_example"; // String | keyword to search
-        String domainCode = "domainCode_example"; // String | domain for the search
-        String sortBy = "relevanceblender"; // String | sort option
-        Integer numberOfProducts = 20; // Integer | number of the results (max 20)
+        AApiClient client = new ApiClient();
+		client.setApiKey("XXXXXX");			//contact support@axesso.de to get key
+		AmzApi apiInstance = new AmzApi(client);
         try {
-            KeywordSearchResponse result = apiInstance.keywordSearch(keyword, domainCode, sortBy, numberOfProducts);
-            System.out.println(result);
+            ProductDetailsResponse product = apiInstance.requestProduct("https://www.amazon.com/dp/B07TN8B972", null);
+            System.out.println(product);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AmzApi#keywordSearch");
+            System.err.println("Exception when calling AmzApi#requestProduct");
             e.printStackTrace();
         }
     }
